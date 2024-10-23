@@ -8,7 +8,15 @@ class UserProfile(models.Model):
     dob=models.DateField(null=True, blank=True)
     Hospital_name =models.CharField(blank= True,max_length=100)
 
+class Patient(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+    gender = models.CharField(max_length=10)
+    symptoms = models.TextField()
+    registration_date = models.DateTimeField(auto_now_add=True)
 
+    def _str_(self):
+        return self.name
 
 
 
