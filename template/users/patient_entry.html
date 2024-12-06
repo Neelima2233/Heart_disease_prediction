@@ -80,6 +80,7 @@
 
         <form method="POST">
             {% csrf_token %}
+            
             {{ form.as_p }}  <!-- Display the form fields from the form object -->
             <button type="submit">Save</button>
         </form>

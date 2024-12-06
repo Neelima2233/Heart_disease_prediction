@@ -11,7 +11,12 @@ class UserProfile(models.Model):
 class Patient(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField()
-    gender = models.CharField(max_length=10)
+    GENDER_CHOICES = [('M', 'Male'),
+        ('F', 'Female'),
+        ('O', 'Other'),
+    ]
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+
     symptoms = models.TextField()
     registration_date = models.DateTimeField(auto_now_add=True)
 

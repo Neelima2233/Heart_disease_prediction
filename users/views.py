@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 88d7e65 (Save local changes before pulling)
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from users.forms import Prediction_form
@@ -168,4 +171,8 @@ def prediction_form(request):
         
     else:
         form = Prediction_form()
+<<<<<<< HEAD
     return render(request, 'users/prediction_form.html', {'form': form})
+=======
+    return render(request, 'users/prediction_form.html', {'form': form})
+>>>>>>> 88d7e65 (Save local changes before pulling)
