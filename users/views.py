@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from users.forms import Prediction_form
@@ -70,7 +69,7 @@ import numpy as np
 import pandas as pd
 import joblib
 model=joblib.load('./knn_model.pkl')
-   
+
 def prediction_form(request):
     if request.method == 'POST':
         form = Prediction_form(data=request.POST)
@@ -88,7 +87,7 @@ def prediction_form(request):
             Smoking_Status = form.cleaned_data.get('smoking_status')
             Blood_Pressure_Systolic = form.cleaned_data.get('systolic')
             Blood_Pressure_Diastolic = form.cleaned_data.get('diastolic')
-           
+
             features_after_onehotencoding =['Height_cm', 'Weight_kg', 'Temperature_C', 'Heart_Rate',
             'Cholesterol_mg_dL', 'Blood_Sugar_mg_dL', 'Blood_Pressure_Systolic',
             'Blood_Pressure_Diastolic', 'Symptoms_dizziness', 'Symptoms_fatigue',
@@ -128,7 +127,7 @@ def prediction_form(request):
                 input_data['Laboratory_Test_Results_Low Iron'] = 1
             if 'normal' in Laboratory_Test_Results:
                 input_data['Laboratory_Test_Results_Normal'] = 1
-           
+
             if 'yes' in Family_History_Heart_Disease:
                 input_data['Family_History_Heart_Disease_Yes'] = 1
             else:
@@ -156,11 +155,11 @@ def prediction_form(request):
                     input_data[col] = 0
 
             input_data = input_data[features_after_onehotencoding]  
-       
+    
             prediction = model.predict(input_data)
             
 
-           
+
             return render(request, 'users/result.html', {
                 'prediction': prediction 
             })
